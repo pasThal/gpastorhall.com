@@ -2,19 +2,17 @@
   "name": "@example/primapersona",
   "version": "0.0.1",
   "private": true,
-	"scripts": {
-	  "astro": "astro",
-	  "dev": "astro dev",
-	  "start": "astro dev",
-	  "build": "astro build",
-	  "preview": "astro preview"
-	}
-
+  "scripts": {
+    "astro": "astro",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.17",
+    "astro": "^4.16.17"
   },
   "dependencies": {
     "@astrolib/seo": "^1.0.0-beta.8",
