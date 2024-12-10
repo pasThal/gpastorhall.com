@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@astrolib/seo": "^1.0.0-beta.8",
+    "@example/primapersona": "file:",
     "tailwindcss": "^3.4.14"
   }
 }
