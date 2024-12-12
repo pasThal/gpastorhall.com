@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import Potentium from "../../images/potentium.png";
+import Potentium from "/public/potentium-screenshot.png";
 ---
 
 <a
@@ -24,8 +24,8 @@ import Potentium from "../../images/potentium.png";
       It was a fun project, but it didn't sell well.
     </p>
   </div>
-  <img
-    src="https://api.apiflash.com/v1/urltoimage?access_key=80112e6173b54cd98408b42d0f0aa693&wait_until=page_loaded&url=https://potentium.org"
+  <Image
+    src={Potentium}
     alt="#_"
     class="rounded-2xl mt-2 duration-300 bg-zinc-950/5 dark:bg-zinc-950 object-cover object-left"
   />
