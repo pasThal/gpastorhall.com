@@ -1,0 +1,28 @@
+name: Update Screenshot
+
+on:
+  push:
+    branches:
+      - main # Trigger when pushing to the main branch
+  schedule:
+    - cron: "0 15 * * *" # Run once every 24 hours, at 3:30pm EST
+
+jobs:
+  update-screenshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Updated Screenshot
+        run: |
+          curl "https://api.apiflash.com/v1/urltoimage?access_key=80112e6173b54cd98408b42d0f0aa693&wait_until=page_loaded&url=https://potentium.org" --output public/potentium-screenshot.png
+
+      - name: Commit and Push Updated Image
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add public/potentium-screenshot.png
+          git commit -m "Update screenshot for potentium.org"
+          git push

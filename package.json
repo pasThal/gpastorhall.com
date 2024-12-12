@@ -17,6 +17,7 @@
   "dependencies": {
     "@astrolib/seo": "^1.0.0-beta.8",
     "@example/primapersona": "file:",
+    "puppeteer": "^23.10.4",
     "tailwindcss": "^3.4.14"
   }
 }
