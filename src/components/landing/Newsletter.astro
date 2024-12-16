@@ -1,86 +1,20 @@
 <div
-  class=" flex flex-col p-8 2xl:p-12 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 bg-zinc-100 dark:bg-zinc-900 shadow-xl dark:shadow-dark ">
+  class="flex flex-col p-8 2xl:p-12 h-full justify-center items-center rounded-3xl overflow-hidden relative lg:col-span-2 lg:row-start-4 bg-zinc-100 dark:bg-zinc-900 shadow-xl dark:shadow-dark"
+>
   <div class="relative p-8 2xl:p-12 text-center w-full">
-    <p id="contact-message" class="text-xl font-medium text-zinc-950 dark:text-zinc-100 lg:text-6xl">
+    <p
+      id="contact-message"
+      class="text-xl font-medium text-zinc-950 dark:text-zinc-100 lg:text-6xl"
+    >
       Get in touch
     </p>
-    <form class="mt-6 sm:flex w-full lg:max-w-lg mx-auto" id="contact-form">
-      <div class="sm:flex sm:items-center sm:gap-4">
-        <div class="sm:basis-1/2">
-          <label
-            for="name"
-            class="sr-only"
-            >Name</label
-          >
-          <input
-            type="text"
-            name="name"
-            id="name"
-            autocomplete="name"
-            required=""
-            class="block w-full h-12 2xl:h-16 px-4 py-2 text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 ring-1 dark:ring-zinc-800 rounded-lg ring-zinc-300 border-transparent appearance-none focus:ring-zinc-50 placeholder-zinc-400 focus:border-zinc-300 dark:focus:bg-zinc-950 focus:outline-none focus:ring-zinc-200 sm:text-sm ring-transparent"
-            placeholder="Your name"
-          />
-        </div>
-        <div class="sm:basis-1/2">
-          <label
-            for="email"
-            class="sr-only"
-            >Email address</label
-          >
-          <input
-            type="email"
-            name="email"
-            id="email"
-            autocomplete="email"
-            required=""
-            class="block w-full h-12 2xl:h-16 px-4 py-2 text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 ring-1 dark:ring-zinc-800 rounded-lg ring-zinc-300 border-transparent appearance-none focus:ring-zinc-50 placeholder-zinc-400 focus:border-zinc-300 dark:focus:bg-zinc-950 focus:outline-none focus:ring-zinc-200 sm:text-sm ring-transparent"
-            placeholder="Your email"
-          />
-        </div>
-      </div>
-      <div class="mt-4 sm:mt-0">
-        <label
-          for="message"
-          class="sr-only"
-          >Message</label
-        >
-        <textarea
-          name="message"
-          id="message"
-          rows="4"
-          class="block w-full h-12 2xl:h-16 px-4 py-2 text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 ring-1 dark:ring-zinc-800 rounded-lg ring-zinc-300 border-transparent appearance-none focus:ring-zinc-50 placeholder-zinc-400 focus:border-zinc-300 dark:focus:bg-zinc-950 focus:outline-none focus:ring-zinc-200 sm:text-sm ring-transparent"
-          placeholder="Your message"
-        ></textarea>
-      </div>
-      <div class="mt-4 sm:ml-2 sm:mt-0 sm:flex-shrink-0">
-        <button
-          type="submit"
-          class="text-sm py-2 w-full px-4 h-12 2xl:h-16 2xl:px-6 font-semibold focus:ring-2 rounded-lg bg-zinc-950 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:text-zinc-100 hover:text-zinc-950 dark:hover:bg-zinc-100/5 hover:bg-zinc-950/10 text-zinc-100 flex duration-200 focus:ring-offset-2 focus:ring-inline-flex items-center justify-between"
-          >Send</button
-        >
-      </div>
-    </form>
+    <div class="mt-6 sm:flex w-full lg:max-w-lg mx-auto">
+      <a
+        href="mailto:mail@gpastorhall.com"
+        class="inline-flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white bg-zinc-950 rounded-lg hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-zinc-200 transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-500"
+      >
+        Contact Me
+      </a>
+    </div>
   </div>
 </div>
-
-<script>
-  const form = document.getElementById("contact-form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      body: formData,
-    });
-    const data = await res.json();
-    if (res.ok) {
-      document.getElementById("contact-message").innerText =
-        "I'll be in touch soon!";
-    } else {
-      document.getElementById("contact-message").innerText =
-        "Something went wrong, try again later";
-    }
-  });
-</script>
-
