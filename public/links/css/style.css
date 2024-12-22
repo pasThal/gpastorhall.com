@@ -45,14 +45,14 @@
 
  a {
     cursor: pointer;
-    color: #1abc9c;
+    color: #31708f;
     text-decoration: none;
  }
 
  a:hover {
     text-decoration:none;
-    color: #1abc9c;
-    opacity: 0.9;
+    color: #FFFFFF;
+    opacity: 1;
  }
 
  hr {
@@ -275,6 +275,27 @@ footer p {
     opacity: 0.8;
     align-content: center;
     padding-left: 25px;
+}
+
+.custom-button-container {
+    text-align: center;  /* Keeps the button centered */
+    margin-top: 80px;    /* Adjust this value to increase space above the button */
+    margin-bottom: 80px; /* Adjust this value to increase space below the button */
+}
+
+.custom-button {
+    padding: 15px 30px;  /* Increase padding for a larger button */
+    background-color: #fafafa; /* Primary color for the button */
+    color: black;        /* Text color for readability */
+    border-radius: 18px; /* Rounded corners for aesthetics */
+    font-size: 19px;     /* Larger font size for visibility */
+    height: 10px;
+    text-decoration: none; /* Removes underline from the link */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.custom-button:hover {
+    background-color: #a3a3a3; /* Darker shade on hover */
 }
 
 

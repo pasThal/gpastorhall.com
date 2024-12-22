@@ -1,9 +1,75 @@
+# name: Deploy
+
+# on: workflow_dispatch
+
+# permissions:
+  # contents: read
+  # pages: write
+  # id-token: write
+
+# concurrency:
+  # group: "pages"
+  # cancel-in-progress: false
+
+# jobs:
+  # build:
+    # runs-on: ubuntu-latest
+    # steps:
+      # - name: Checkout code
+        # uses: actions/checkout@v4
+
+      # - name: Use Node.js 18.x
+        # uses: actions/setup-node@v3
+        # with:
+          # node-version: 18.x
+
+      # - name: Install dependencies
+        # run: npm install
+
+      # - name: Build Astro project
+        # run: npm run build
+
+      # - name: Upload build artifacts
+        # uses: actions/upload-artifact@v3
+        # with:
+          # name: dist
+          # path: dist
+
+  # deploy:
+    # needs: build
+    # environment:
+      # name: github-pages
+      # url: ${{ steps.deployment.outputs.page_url }}
+    # runs-on: ubuntu-latest
+    # steps:
+      # - name: Download build artifacts
+        # uses: actions/download-artifact@v3
+        # with:
+          # name: dist
+          # path: dist
+
+      # - name: Setup GitHub Pages
+        # uses: actions/configure-pages@v5
+
+      # - name: Upload artifact to GitHub Pages
+        # uses: actions/upload-pages-artifact@v3
+        # with:
+          # path: dist
+
+      # - name: Deploy to GitHub Pages
+        # id: deployment
+        # uses: actions/deploy-pages@v4
+      
 name: Deploy
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,20 +81,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Step 2: Set up Node.js environment
       - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # Step 4: Build Astro project
       - name: Build Astro project
         run: npm run build
 
+      # Step 5: Copy `links` folder into `dist`
+      - name: Copy links folder
+        run: cp -r ./public/links ./dist/links
+
+      # Step 6: Upload build artifacts for the deploy job
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -42,21 +117,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Download build artifacts
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: dist
           path: dist
 
+      # Step 2: Setup GitHub Pages
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
+      # Step 3: Upload build artifacts to GitHub Pages
       - name: Upload artifact to GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
+      # Step 4: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      
