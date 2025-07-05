@@ -8,7 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "echo \"No tests specified\""
+    "test": "node tests/home.test.js"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.2.1",
