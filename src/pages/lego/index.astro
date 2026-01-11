@@ -1,0 +1,28 @@
+---
+const pdfURL = "/lego/manual.pdf";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Opening LEGO PDF…</title>
+
+    <style>
+      body {
+        display: none;
+      }
+    </style>
+
+    <script>
+      window.location.assign("{{ pdfURL }}");
+    </script>
+  </head>
+
+  <body>
+    <p>
+      If the PDF does not open automatically,
+      <a href="{{ pdfURL }}">click here to open it</a>.
+    </p>
+  </body>
+</html>
