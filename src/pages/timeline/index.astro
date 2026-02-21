@@ -14,15 +14,15 @@ const timeURL = "https://gpx.studio/embed?options=%7B%22token%22%3A%22pk.eyJ1Ijo
       }
     </style>
 
-    <script>
-      window.location.assign("{{ timeURL }}");
+    <script define:vars={{ timeURL }}>
+      window.location.assign(timeURL);
     </script>
   </head>
 
   <body>
     <p>
       If the Timeline does not open automatically,
-      <a href="{{ timeURL }}">click here to open it</a>.
+      <a href={timeURL}>click here to open it</a>.
     </p>
   </body>
 </html>
